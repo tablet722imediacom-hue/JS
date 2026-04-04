@@ -1,7 +1,7 @@
-(function(){
+//(function(){
     var wallet;
-    function addOperation(){
-
+    function addOperation(op){
+        wallet.addOperation(op);
     }
 
     function removeOperation(){
@@ -21,6 +21,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function(){
-        var wallet = new Wallet();
+        wallet = new Wallet();
     });
-})();
+//})();
