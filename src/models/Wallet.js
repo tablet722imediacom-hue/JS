@@ -1,3 +1,8 @@
+var OpType = {
+    OUT: 0,
+    IN: 1
+}
+
 function getWallet(){
     var wallet = localStorage.getItem('wallet');
     if(!wallet){
@@ -7,6 +12,10 @@ function getWallet(){
         }
     }
     return JSON.parse(wallet);
+}
+
+function saveWallet(wallet){
+    localStorage.getItem('wallet', JSON.stringify(wallet));
 }
 
 function Wallet(){
@@ -19,7 +28,19 @@ function Wallet(){
     }
 
     this.addOperation = function(){
-
+        var operation = {
+            amount: operations.amount,
+            description: operations.description,
+            type: operations.type,
+            date: new Date().getTime()
+        }
+        if(op.type === OpType.IN){
+            balance += operation.amount;
+        } else if(op.type === OpType.OUT){
+            balance -= operation.amount;
+        }
+        operations.push(operation);
+        saveWallet();
     }
 
     this.removeOperation = function(){
