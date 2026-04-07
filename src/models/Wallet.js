@@ -4,7 +4,8 @@ var OpType = {
 }
 
 var WalletErrors = {
-    INVALID_OPERATION: 'INVALID_OPERATION'
+    INVALID_OPERATION: 'INVALID_OPERATION',
+    OPERATION_NOT_FOUND: 'OPERATION_NOT_FOUND'
 }
 
 function getWallet(){
@@ -40,9 +41,9 @@ function Wallet(){
             throw new Error(WalletErrors.INVALID_OPERATION);
         }
         var operation = {
-            amount: parseFloat(op.amount), // usa 'op', non 'operations'
-            description: op.description,   // usa 'op'
-            type: op.type,                 // usa 'op'
+            amount: parseFloat(op.amount), 
+            description: op.description,   
+            type: op.type,                 
             date: new Date().getTime()
         }
         if(op.type === OpType.IN){
@@ -54,8 +55,26 @@ function Wallet(){
         saveWallet({});
     }
 
-    this.removeOperation = function(){
-
+    this.removeOperation = function(id){
+        var operationIndex;
+        for(var i = 0; i < operations.length; i++){
+            if(operations[i].date === id){
+                operationIndex = i;
+                break;
+            }
+        }
+        if(typeof operationIndex === 'undefined'){
+            throw new Error(WalletErrors.OPERATION_NOT_FOUND);
+        }
+        var operation = operations[operationIndex];
+        if(operations.type === OpType.IN){
+            balance -= operations.type;
+        } else if(operations.type === OpType.OUT){
+            balance += operations.type;
+        }
+        //splice strumento usato per modificare gli array
+        operations.splice(operationIndex, 1);
+        saveWallet();
     }
 
     this.findOperation = function(){
