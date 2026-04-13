@@ -1,0 +1,23 @@
+{
+  "name": "js",
+  "version": "0.1.0",
+  "description": "Boh",
+  "keywords": [
+    "app"
+  ],
+  "homepage": "https://github.com/tablet722imediacom-hue/JS#readme",
+  "bugs": {
+    "url": "https://github.com/tablet722imediacom-hue/JS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tablet722imediacom-hue/JS.git"
+  },
+  "license": "LICENSE.md",
+  "author": "Carmine Aiello",
+  "type": "commonjs",
+  "main": "seconda_prova/src/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
