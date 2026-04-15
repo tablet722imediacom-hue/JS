@@ -11,7 +11,6 @@ const WalletErrors = Object.freeze({
 function Wallet(){
     let balance = 0;
     let operations = [];
-    
     function init(){
         const wallet = getWallet();
         balance = wallet.balance;
