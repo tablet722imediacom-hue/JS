@@ -3,9 +3,9 @@ const inject = require("gulp-inject");
 const paths = require("./paths");
 
 const compileIndex = function(){
-    const jsIndex = gulp.src(paths.getJsEntrypath());
+    const jsIndex = gulp.src(paths.getJsEntryPath());
     const utilsIndex = gulp.src(paths.getJsEntryPath("/utils.js"));
-    const modelsIndex = gulp.src(paths.getJsEntryPath("/models/Wallet.js"););
+    const modelsIndex = gulp.src(paths.getJsEntryPath("/models/Wallet.js"));
     return gulp.src(paths.getHTMLEntryPath())
     .pipe(inject(jsIndex, { relative: true, name : "custom" }))
     .pipe(inject(utilsIndex, { relative: true, name : "custom:utils" }))

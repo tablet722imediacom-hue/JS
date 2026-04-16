@@ -26,17 +26,17 @@ module.exports ={
     },
 
     getHTMLEntryPath: function(){
-        return paths.global.src + paths.html.entry;
+        return paths.global.src + '/' + paths.html.entry;
     },
 
     getJsEntryPath: function(){
-        return paths.global.src + paths.js.base + paths.js.entry;
+        return paths.global.src + '/' + paths.js.base + '/' + paths.js.entry;
     },
 
     getJsSrcPath: function(innerPath){
-        const baseJSPath = paths.global.src + paths.js.base;
+        const baseJSPath = paths.global.src + '/' + paths.js.base;
         if(innerPath){
-            return baseJSPath + innerPath;
+            return baseJSPath + '/' + innerPath;
         }
         return baseJSPath;
     }
