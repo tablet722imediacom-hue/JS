@@ -3,6 +3,7 @@ const gulp = require("gulp");
 const jsTasks = require("./jsTasks");
 const viewTasks = require("./viewTasks"); // Importa l'intero modulo, non solo una funzione
 const series = gulp.series;
+const serveTasks = require("./serve");
 
 // Non c'è bisogno di assegnare copyJs a una variabile a sé stante se usiamo semplicemente jsTasks.copyJs
 // const copyJs = require("./jsTasks").copyJs; 
@@ -12,8 +13,8 @@ const dev = series(
     viewTasks.compileIndex, 
     jsTasks.copyJs, 
     jsTasks.watchJS, 
-    viewTasks.watchIndex
-    /*, serve, watchHtml*/
+    viewTasks.watchIndex,
+    serveTasks.serve
 );
 
 module.exports = {
